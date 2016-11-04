@@ -303,6 +303,7 @@ containing a value of this type.
         public static final int hybrid=0x7f080000;
         public static final int icon_only=0x7f080005;
         public static final int light=0x7f08000a;
+        public static final int localizationButton=0x7f08000e;
         public static final int none=0x7f080001;
         public static final int normal=0x7f080002;
         public static final int satellite=0x7f080003;

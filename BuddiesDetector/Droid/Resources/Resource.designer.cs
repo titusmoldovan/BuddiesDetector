@@ -352,6 +352,9 @@ namespace BuddiesDetector.Droid
 			// aapt resource value: 0x7f08000a
 			public const int light = 2131230730;
 			
+			// aapt resource value: 0x7f08000e
+			public const int localizationButton = 2131230734;
+			
 			// aapt resource value: 0x7f080001
 			public const int none = 2131230721;
 			
