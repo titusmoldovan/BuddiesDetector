@@ -6,6 +6,7 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Gms.Maps;
 using Android.OS;
 using Android.Runtime;
 using Android.Util;
@@ -14,7 +15,7 @@ using Android.Widget;
 
 namespace BuddiesDetector.Droid
 {
-	public class Fragment : Fragment
+	public class MyMapFragment : MapFragment
 	{
 		public override void OnCreate(Bundle savedInstanceState)
 		{
@@ -29,6 +30,11 @@ namespace BuddiesDetector.Droid
 			// return inflater.Inflate(Resource.Layout.YourFragment, container, false);
 
 			return base.OnCreateView(inflater, container, savedInstanceState);
+		}
+
+		public override void OnViewCreated(View view, Bundle savedInstanceState)
+		{
+			base.OnViewCreated(view, savedInstanceState);
 		}
 	}
 }
