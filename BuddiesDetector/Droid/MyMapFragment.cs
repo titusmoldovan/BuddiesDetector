@@ -22,6 +22,7 @@ namespace BuddiesDetector.Droid
 		private GoogleMap _map;
 		private MapFragment _mapFragment;
 		private RadarView _radarView;
+		private int radarRadius = 200;
 
 		LocationManager localizationManager;
 
@@ -52,8 +53,8 @@ namespace BuddiesDetector.Droid
 			RelativeLayout layout = (Android.Widget.RelativeLayout)Activity.FindViewById(Resource.Id.mainLayout);
 			layout.AddView(_radarView);
 
-			_radarView.LayoutParameters.Height = PixelsToDp(100);
-			_radarView.LayoutParameters.Width = PixelsToDp(100);
+			_radarView.LayoutParameters.Height = PixelsToDp(radarRadius);
+			_radarView.LayoutParameters.Width = PixelsToDp(radarRadius);
 
 			_mapFragment = new MapFragment();
 			FragmentTransaction transaction = Activity.FragmentManager.BeginTransaction();
@@ -114,8 +115,8 @@ namespace BuddiesDetector.Droid
 			var screenPosition = projection.ToScreenLocation(markerOpt1.Position);
 
 			_radarView.Visibility = ViewStates.Visible;
-			_radarView.SetX(screenPosition.X);
-			_radarView.SetY(screenPosition.Y);
+			_radarView.SetX(screenPosition.X - radarRadius);
+			_radarView.SetY(screenPosition.Y - radarRadius);
 
 			_radarView.startAnimation();
 		}
@@ -127,7 +128,7 @@ namespace BuddiesDetector.Droid
 
 		public void OnProviderEnabled(string provider)
 		{
-			throw new NotImplementedException();
+			
 		}
 
 		public void OnStatusChanged(string provider, [GeneratedEnum] Availability status, Bundle extras)
