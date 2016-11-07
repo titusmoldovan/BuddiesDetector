@@ -2,27 +2,28 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 using Android.App;
-using Android.Content;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
 using Android.Locations;
 using Android.OS;
 using Android.Runtime;
-using Android.Util;
 using Android.Views;
 using Android.Widget;
+using Android.Transitions;
+using Android.Util;
+using System.Drawing;
 
 namespace BuddiesDetector.Droid
 {
-	public class MyMapFragment : MapFragment, IOnMapReadyCallback, View.IOnClickListener, ILocationListener
+	public class MyMapFragment : Fragment, IOnMapReadyCallback, View.IOnClickListener, ILocationListener
 	{
 		private GoogleMap _map;
+		private MapFragment _mapFragment;
+		private RadarView _radarView;
 
 		LocationManager localizationManager;
-
 
 		public static MyMapFragment NewInstance()
 		{
@@ -32,24 +33,33 @@ namespace BuddiesDetector.Droid
 		public override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
-
-			// Create your fragment here
 		}
 
 		public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
 			// Use this to return your custom view for this Fragment
 			// return inflater.Inflate(Resource.Layout.YourFragment, container, false);
-
-			return base.OnCreateView(inflater, container, savedInstanceState);
+			return inflater.Inflate(Resource.Layout.MainFragment, container, false);
 		}
 
 		public override void OnViewCreated(View view, Bundle savedInstanceState)
 		{
 			base.OnViewCreated(view, savedInstanceState);
 
-			GetMapAsync(this);
+			_radarView = new RadarView(Activity);
+			_radarView.Visibility = ViewStates.Gone;
 
+			RelativeLayout layout = (Android.Widget.RelativeLayout)Activity.FindViewById(Resource.Id.mainLayout);
+			layout.AddView(_radarView);
+
+			_radarView.LayoutParameters.Height = PixelsToDp(100);
+			_radarView.LayoutParameters.Width = PixelsToDp(100);
+
+			_mapFragment = new MapFragment();
+			FragmentTransaction transaction = Activity.FragmentManager.BeginTransaction();
+			transaction.Add(Resource.Id.map, _mapFragment).Commit();
+
+			_mapFragment.GetMapAsync(this);
 		}
 
 		public void OnMapReady(GoogleMap googleMap)
@@ -59,6 +69,7 @@ namespace BuddiesDetector.Droid
 
 		public void OnClick(View v)
 		{
+
 			localizationManager = (LocationManager)Activity.GetSystemService(Activity.LocationService);
 
 			Criteria criteriaForLocationService = new Criteria
@@ -98,6 +109,15 @@ namespace BuddiesDetector.Droid
 			CameraUpdate cameraUpdate = CameraUpdateFactory.NewCameraPosition(cameraPosition);
 
 			_map.MoveCamera(cameraUpdate);
+
+			Projection projection = _map.Projection;
+			var screenPosition = projection.ToScreenLocation(markerOpt1.Position);
+
+			_radarView.Visibility = ViewStates.Visible;
+			_radarView.SetX(screenPosition.X);
+			_radarView.SetY(screenPosition.Y);
+
+			_radarView.startAnimation();
 		}
 
 		public void OnProviderDisabled(string provider)
@@ -113,6 +133,11 @@ namespace BuddiesDetector.Droid
 		public void OnStatusChanged(string provider, [GeneratedEnum] Availability status, Bundle extras)
 		{
 			throw new NotImplementedException();
+		}
+
+		private int PixelsToDp(int pixels)
+		{
+			return (int)TypedValue.ApplyDimension(ComplexUnitType.Dip, pixels, Resources.DisplayMetrics);
 		}
 	}
 }

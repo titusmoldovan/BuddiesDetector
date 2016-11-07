@@ -19,7 +19,7 @@ namespace BuddiesDetector.Droid
 			tx.Add(Resource.Id.fragment_container, myMapFragment);
 			tx.Commit();
 
-			ImageButton localizationButton = (Android.Widget.ImageButton)FindViewById(Resource.Id.localizationButton);
+			ImageButton localizationButton = (ImageButton)FindViewById(Resource.Id.localizationButton);
 
 			localizationButton.SetOnClickListener(myMapFragment);
 		}

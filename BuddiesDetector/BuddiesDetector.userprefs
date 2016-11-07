@@ -1,16 +1,14 @@
 ﻿<Properties StartupConfiguration="{9EA565D2-38AB-453E-8EC5-4FE88F4DDB59}|Default">
   <MonoDevelop.Ide.ItemProperties.BuddiesDetector.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.236F2EF9-9652-421F-A51D-B01FFD299316" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Droid/MyMapFragment.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="Droid/MyMapFragment.cs" Line="57" Column="32" />
-      <File FileName="Droid/packages.config" Line="1" Column="1" />
-      <File FileName="Droid/Properties/AndroidManifest.xml" Line="30" Column="51" />
-      <File FileName="Droid/Resources/Resource.designer.cs" Line="1" Column="1" />
-      <File FileName="Droid/MainActivity.cs" Line="24" Column="57" />
+      <File FileName="Droid/MainActivity.cs" Line="23" Column="4" />
+      <File FileName="Droid/MyMapFragment.cs" Line="40" Column="50" />
+      <File FileName="Droid/RadarView.cs" Line="10" Column="15" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.BuddiesDetector.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Android_Accelerated_x86" />
+  <MonoDevelop.Ide.ItemProperties.BuddiesDetector.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.33005d64740832d5" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/titusmoldovan/BuddiesDetector/BuddiesDetector/Droid/Fragment.cs" line="50" column="1" />

@@ -304,6 +304,8 @@ containing a value of this type.
         public static final int icon_only=0x7f080005;
         public static final int light=0x7f08000a;
         public static final int localizationButton=0x7f08000e;
+        public static final int mainLayout=0x7f08000f;
+        public static final int map=0x7f080010;
         public static final int none=0x7f080001;
         public static final int normal=0x7f080002;
         public static final int satellite=0x7f080003;
@@ -316,6 +318,7 @@ containing a value of this type.
     }
     public static final class layout {
         public static final int main=0x7f040000;
+        public static final int mainfragment=0x7f040001;
     }
     public static final class mipmap {
         public static final int icon=0x7f030000;

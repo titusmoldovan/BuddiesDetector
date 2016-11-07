@@ -355,6 +355,12 @@ namespace BuddiesDetector.Droid
 			// aapt resource value: 0x7f08000e
 			public const int localizationButton = 2131230734;
 			
+			// aapt resource value: 0x7f08000f
+			public const int mainLayout = 2131230735;
+			
+			// aapt resource value: 0x7f080010
+			public const int map = 2131230736;
+			
 			// aapt resource value: 0x7f080001
 			public const int none = 2131230721;
 			
@@ -404,6 +410,9 @@ namespace BuddiesDetector.Droid
 			
 			// aapt resource value: 0x7f040000
 			public const int Main = 2130968576;
+			
+			// aapt resource value: 0x7f040001
+			public const int MainFragment = 2130968577;
 			
 			static Layout()
 			{
